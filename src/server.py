@@ -9,9 +9,9 @@ app = Flask(__name__)
 def index():
     #Importante para que nuestro servidor entienda peticiones JSON
     request_data = request.get_json()
-    Rekognition.DetectLabels(request_data['Imagen64'])
+    resp = Rekognition.DetectLabels(request_data['Imagen64'])
     
-    return {"HOLA" : "TEST"}
+    return resp
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -16,11 +16,24 @@ Rekognition = boto3.client(
 
 
 def DetectLabels(Image64):
+    Imagebytes = bytes(Image64, 'utf-8')
+    Binary = base64.decodebytes(Imagebytes)
+    
     resp = Rekognition.detect_labels(
         Image = {
-            bytes: base64.decodestring(Image64)
+            'Bytes': Binary
         },
         MaxLabels = 20
     )
 
-    print(resp['Labels'])
+    result = {}
+    result['Resultados'] = []
+    for label in resp['Labels']:
+        result['Resultados'].append( {
+            'Atributo': label['Name'],
+            'Confianza' : str(label['Confidence'])
+        })
+    
+    return result
+
+    
