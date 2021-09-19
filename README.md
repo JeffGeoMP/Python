@@ -15,3 +15,14 @@ Una vez hecho esto se procede a configurar el entorno virtual
 2. Se Activa el entorno virtual `. venv/bin/activate`
 
 Con esto ya se tendra un entorno en el cual se pueda trabajar.
+
+
+## Librerias Utilizadas
+
+Las librerias a instalar son las siguientes:
+
+```bash
+pip install flask
+pip install boto
+pip install python-decouple
+```
